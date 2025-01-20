@@ -826,3 +826,6 @@ app.clientside_callback(
     Output('dash-container', 'children'),
     Input('_', 'data')
 )
+
+if __name__ == '__main__':
+    app.layout = app.layout  # This ensures the layout is properly initialized
