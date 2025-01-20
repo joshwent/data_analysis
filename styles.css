@@ -1,0 +1,207 @@
+:root {
+  --primary: #5B9AFF;
+  --accent: #00D1B2;
+  --bg: #111217;
+  --card: #181B1F;
+  --text: #D8D9DA;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+.error {
+    text-align: center;
+    padding: 2rem;
+    color: var(--danger-color);
+    font-size: 1.2rem;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 1rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 600;
+}
+:root {
+    --primary-color: #5B9AFF;
+    --accent-color: #00D1B2;
+    --bg-dark: #111217;
+    --bg-card: #181B1F;
+    --bg-hover: #22252B;
+    --text-primary: #D8D9DA;
+    --text-secondary: #99A1B2;
+    --border-color: #2C3235;
+    --panel-header: #22252B;
+    --panel-border: #34363C;
+    --success-color: #6CCF8E;
+    --warning-color: #FF9900;
+    --danger-color: #FF5286;
+}
+
+body {
+    background-color: var(--bg-dark) !important;
+    color: var(--text-primary) !important;
+    font-family: 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    line-height: 1.5 !important;
+}
+
+.dashboard-title {
+    color: var(--text-primary);
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--panel-border);
+    background: var(--bg-card);
+    letter-spacing: 0.2px;
+}
+
+.bk-accordion {
+    background: var(--bg-card) !important;
+    border-radius: 3px !important;
+    border: 1px solid var(--panel-border) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+    overflow: hidden !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.bk-accordion-header {
+    background: var(--panel-header) !important;
+    padding: 0.75rem 1rem !important;
+    color: var(--text-primary) !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    border: none !important;
+    transition: all 0.15s ease !important;
+    border-bottom: 1px solid var(--panel-border) !important;
+}
+
+.bk-accordion-header:hover {
+    background: var(--bg-hover) !important;
+    color: var(--primary-color) !important;
+}
+
+.bk-accordion-header.active {
+    background: var(--bg-hover) !important;
+    color: var(--primary-color) !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+}
+
+.bk-accordion-header button {
+    color: inherit !important;
+}
+
+.bk-accordion button:before {
+    border-color: var(--primary-color) !important;
+    opacity: 1 !important;
+}
+
+.bk-accordion-content {
+    background: var(--bg-card) !important;
+    border: none !important;
+    padding: 1rem !important;
+}
+
+.bk-checkbox-group {
+    margin: 0.5rem !important;
+    padding: 0.5rem !important;
+}
+
+.bk-checkbox-group label {
+    color: var(--text-secondary) !important;
+    font-size: 0.9rem !important;
+    margin: 0.25rem 0 !important;
+}
+
+.bk-input {
+    background: var(--bg-hover) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+    color: var(--text-primary) !important;
+    padding: 0.75rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.bk-input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2) !important;
+}
+
+.stats-card {
+    background: var(--bg-card) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    transition: transform 0.2s ease !important;
+}
+
+.stats-card:hover {
+    transform: translateY(-2px) !important;
+}
+
+.stats-card .bk-card-header {
+    background: var(--bg-hover) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--primary-color) !important;
+    font-weight: 600 !important;
+    padding: 1rem !important;
+}
+
+.stats-card .markdown {
+    padding: 1rem !important;
+    text-align: center !important;
+    border-radius: 8px !important;
+    background: var(--bg-hover) !important;
+    margin: 0.25rem !important;
+    min-width: 120px !important;
+}
+
+.stats-card .markdown h3 {
+    color: var(--accent-color) !important;
+    font-size: 1.4rem !important;
+    margin: 0 0 1rem !important;
+    text-align: center !important;
+}
+
+.stats-card .markdown strong {
+    color: var(--text-primary) !important;
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Plot styling */
+.plot-container {
+    background: var(--bg-card) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    margin: 0.5rem !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.js-plotly-plot .plotly .main-svg {
+    background: var(--bg-card) !important;
+}
+
+.js-plotly-plot .plotly .modebar {
+    background: transparent !important;
+}
+
+.js-plotly-plot .plotly .modebar-btn path {
+    fill: var(--text-secondary) !important;
+}

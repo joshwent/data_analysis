@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Analytics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.1/dist/darkly/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+</head>
+<body>
+    <div id="dash-container"></div>
+    
+    <script type="module">
+        async function initDashApp() {
+            try {
+                let pyodide = await loadPyodide({
+                    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/"
+                });
+                
+                console.log("Pyodide loaded successfully");
+                
+                document.getElementById('dash-container').innerHTML = 
+                    '<div class="loading">Loading dashboard...</div>';
+                
+                // Load micropip and base packages first
+                await pyodide.loadPackage(['micropip', 'pandas', 'numpy']);
+                console.log("Base packages loaded successfully");
+                
+                // Install additional packages via micropip
+                await pyodide.runPythonAsync(`
+                    import micropip
+                    print("Installing additional packages...")
+                    await micropip.install([
+                        'plotly',
+                        'dash',
+                        'dash-core-components',
+                        'dash-html-components',
+                        'dash-bootstrap-components'
+                    ])
+                    print("Additional packages installed successfully")
+                `);
+                
+                const analysisResponse = await fetch('analysis.py');
+                const analysisCode = await analysisResponse.text();
+                
+                const parserResponse = await fetch('html_parser.py');
+                const parserCode = await parserResponse.text();
+                
+                await pyodide.runPythonAsync(`
+                    import dash
+                    import dash_core_components as dcc
+                    import dash_html_components as html
+                    import dash_bootstrap_components as dbc
+                    from dash.dependencies import Input, Output, State
+                    import plotly.express as px
+                    import pandas as pd
+                    
+                    ${parserCode}
+                    ${analysisCode}
+                `);
+                
+                console.log("Dashboard initialized successfully");
+                
+            } catch (error) {
+                console.error("Error initializing dashboard:", error);
+                document.getElementById('dash-container').innerHTML = 
+                    `<div class="error">Error loading dashboard: ${error.message}</div>`;
+            }
+        }
+
+        initDashApp();
+    </script>
+</body>
+</html>
